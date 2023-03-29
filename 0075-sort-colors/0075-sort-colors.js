@@ -4,34 +4,18 @@
  */
 var sortColors = function(nums) {
 
-    let counter = 0
-    let decrementer = nums.length - 1
+    let endInd = nums.length - 1
+    let startInd = 0
 
-    while(counter <= decrementer){
-        if(nums[counter] === 0){
-            console.log(nums[counter])
-            nums.splice(counter, 1)
-            nums.splice(0, 0, 0)
-            
-            //counter++
-            if(nums[counter] === 0){
-                counter++
-            }
-        }else if(nums[counter] === 2){
-            console.log(nums[counter])
-            nums.splice(counter, 1)
-            nums.splice(nums.length, 0, 2)
-            
-            //counter++
-            if(nums[decrementer] === 2){
-                console.log(nums[counter])
-                decrementer--
-            }
-        }else if(nums[counter] === 1){
-            console.log(nums[counter])
-            //nums.splice(counter, 1, 1)
-            counter++
-        }
+    for (let i = 0; i <= endInd; i++){
+          if(nums[i] === 0){
+              [nums[i], nums[startInd]] = [nums[startInd], nums[i]]
+                startInd++
+          } else if(nums[i] === 2){
+              [nums[i], nums[endInd]] = [nums[endInd], nums[i]]
+              endInd--
+              i--
+          }
     }
 
 };
